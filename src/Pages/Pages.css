@@ -390,7 +390,77 @@ body {
 .delete-button:hover {
   background-color: #c82333;
 }
-/*----------------------- Loader.css -----------------------*/
+/*----------------------- related Events.css -----------------------*/
+/* Our Colors Palette */
+:root {
+  --extra-color: #c08610; /* extra color logo , hovers, simple */
+  --background-shadow: #cec8be; /* background or shadow */
+  --font-bg: #fff; /* fonts and background pages */
+  --body-bg: #ddd; /* body background color */
+  --shadow-hover-font: #808080; /* Shadows , hovers , fonts */
+  --font-border: #000; /* fonts and borders */
+}
+
+.user-dashboard__projects-section-header {
+  background-color: var(--extra-color);
+  color: var(--font-bg);
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  border-bottom: 2px solid var(--font-border);
+}
+
+.manage-events-container, .events-container, .admin-events-container {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--font-bg);
+  box-shadow: 0 4px 8px var(--background-shadow);
+  max-width: 800px;
+  border-radius: 8px;
+}
+
+.manage-events-form, .event-list, .booking-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-events-input, .manage-events-button, .book-button, .cancel-button, .edit-button, .delete-button {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid var(--font-border);
+  border-radius: 4px;
+}
+
+.manage-events-input {
+  background-color: var(--body-bg);
+}
+
+.manage-events-button, .book-button, .cancel-button, .edit-button, .delete-button {
+  background-color: var(--extra-color);
+  color: var(--font-bg);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.manage-events-button:hover, .book-button:hover, .cancel-button:hover, .edit-button:hover, .delete-button:hover {
+  background-color: var(--shadow-hover-font);
+}
+
+.event-list-item, .booking-list-item {
+  background-color: var(--body-bg);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px var(--background-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-list-item span, .booking-list-item span {
+  color: var(--font-border);
+}
 
 /*----------------------- Loader.css -----------------------*/
 

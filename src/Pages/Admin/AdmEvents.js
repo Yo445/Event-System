@@ -1,28 +1,38 @@
-import React from 'react'
-import { Box } from "@mui/material";
+import React, { useState, useEffect } from 'react';
 import '../Pages.css';
 
-import Ticket from '../../Components/Ticket'
+export default function AdminEvents() {
+  const [bookings, setBookings] = useState([]);
 
-export default function AdmEvents() {
+  useEffect(() => {
+    fetchBookings();
+    const intervalId = setInterval(fetchBookings, 5000); // Adjust interval as needed
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, []);
+
+  const fetchBookings = async () => {
+    try {
+      const response = await fetch('/api/bookings');
+      const data = await response.json();
+      setBookings(data);
+    } catch (error) {
+      console.error('Error fetching bookings:', error);
+    }
+  };
+
   return (
-    <div>
+    <div className="admin-events-container">
       <div className="user-dashboard__projects-section-header">
-            <p>Events booked by user</p>
+        <p>User Bookings</p>
       </div>
-      <Box display="flex" justifyContent="center" flexWrap="wrap">
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-              <Ticket />
-      </Box>
-
+      <div className="booking-list">
+        {bookings.map((booking) => (
+          <div key={booking._id} className="booking-list-item">
+            <span>{booking.eventTitle} booked by {booking.email}</span>
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
